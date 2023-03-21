@@ -10,6 +10,16 @@ require("sistema_bd.php");
     <title>ARQ Cultura</title>
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+<script>
+        function formatar(mascara, documento){
+            var i = documento.value.length;
+            var saida = mascara.substring(0,1);
+            var texto = mascara.substring(i)
+            if(texto.substring(0,1) != saida){
+                documento.value +=texto.substring(0,1);
+            }
+        }
+</script>
 </head>
 <a class="legend2" href="login.php"><small style="font-size: 15px; position: absolute; right: 645px; top: 30px;">Voltar</small><i class="uil uil-arrow-left" style="font-size: 35px; position: absolute; right: 650px; top: 0px;"></i></a>
 
@@ -18,7 +28,7 @@ require("sistema_bd.php");
         <div class="forms">
             <div class="form-cadastro">
                 <p><span class="title">Cadastro</span></p>
-                <form action="inserir_usuario.php" method="post" id="form">
+                <form action="inserir_usuario.php" method="post" id="form-login">
                     <div class="input-field">
                         <input type="text" placeholder="Nome" class="form-control" id="id_nome" name="nome" required>
                         <i class="uil uil-user"></i>
@@ -29,7 +39,7 @@ require("sistema_bd.php");
                         <small>Usuário já cadastrado!</small>
                     </div>
                     <div class="input-field">
-                        <input type="tel" id="id_telefone" name="telefone" maxlength="11" placeholder="Telefone" style="color:#6c757d;" required>
+                        <input type="tel" id="id_telefone" name="telefone" placeholder="Telefone" maxlength="13" OnKeyPress="formatar('##-#####-####', this)" required>
                         <i class="uil uil-phone"></i>
                     </div>
                     <div class="input-field data">
@@ -37,9 +47,13 @@ require("sistema_bd.php");
                         <i class="uil uil-calendar-alt"></i>
                     </div>
                     <div class="input-field">
-                        <input type="password" class="password" placeholder="Crie sua senha" minlength="8" maxlength="12" id="id_senha" name="senha" style="color:#6c757d;" required>
+                        <input type="password" class="password" placeholder="Crie sua senha" minlength="8" maxlength="12" id="id_senha" name="senha" required>
                         <i class="uil uil-lock icon"></i>
                         <i class="uil uil-eye-slash showHidePw"></i>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" class="password" placeholder="Confirme sua senha" minlength="8" maxlength="12" id="id_confirmar" name="confirmar" required>
+                        <i class="uil uil-lock icon"></i>
                     </div>
                     <div hidden>
                         <p>Tipo de Perfil:</p>
@@ -47,7 +61,7 @@ require("sistema_bd.php");
                         <label for="id_tipo">Usuário</label><br>
                     </div>
                     <div class="input-field button-cadastro">
-                    <a href="javascript:{}" onclick="document.getElementById('form').submit(); return false;"><input type="submit" value="Cadastrar" style="margin-top: -3%;"></a>
+                    <button type="submit" class="input-field" style="margin-top: -3%; text-align: center; background-color: #915c37; border: none; color: #fff; font-size: 17px; font-weight: 500; letter-spacing: 1px; border-radius: 6px; padding: .5rem 8.5rem;">Cadastrar</button>
                     </div>
                 </form>
                 <div class="cadastro-signup">
@@ -59,6 +73,8 @@ require("sistema_bd.php");
         </div>
     </div>
     <script src="js/script2.js"></script>
+    <script src="js/script3.js"></script>
+    <script src="js/validate.js"></script>
     <script src="js/scriptCadastro.js"></script>
 </body>
 

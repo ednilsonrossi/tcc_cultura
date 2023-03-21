@@ -16,9 +16,7 @@ protectAdm();
 </br></br>
     <?php if (isset($_SESSION["usuario_logado"])) { ?>
       <p class="text-success">Seja Bem-Vindo ADM <?= $_SESSION["usuario_logado"]?>!</p>
-    <?php } else {
-      header("Location: ../public/erro.php");
-    } ?>
+    <?php } ?>
 
     <a href="../logout.php">Sair</a>   
   </section>  

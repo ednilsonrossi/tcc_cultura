@@ -1,3 +1,7 @@
+<?php
+require("sistema_bd.php");
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -16,9 +20,9 @@
         <div class="forms">
             <div class="form-login">
                 <p><span class="title">Login</span></p>
-                <form action="valida_login.php" id="form_login" method="post">
+                <form id="form_login" method="post">
                     <div class="input-field">
-                        <input type="email" placeholder="Email" id="id_email" name="email" required>
+                        <input type="email" placeholder="Email" id="id_email" name="email" value="<?php if(isset($_COOKIE['username'])) echo $_COOKIE['username'];?>" required>
                         <i class="uil uil-envelope icon"></i>
                     </div>
                     <div class="input-field">
@@ -26,16 +30,11 @@
                         <i class="uil uil-lock icon"></i>
                         <i class="uil uil-eye-slash showHidePw"></i>
                     </div>
-                    <div class="checkbox-text">
-                        <div class="checkbox-content">
-                            <input type="checkbox" id="logCheck">
-                            <label for="logCheck" class="text text-check">Manter Conectado</label>
-                        </div>
-                        <a href="#" class="text">Esqueceu sua senha?</a>
-                    </div>
-                    <div class="input-field button-login">
-                        <a href="javascript:{}" onclick="document.getElementById('form_login').submit(); return false;"><input type="submit" id="btn_login" value="Entrar"></a>
-                    </div>
+                        <input type="checkbox" name="lembrar" id="logCheck" style="margin-left: 2.5%;">
+                        <label for="logCheck" class="text text-check" style="margin-top: 7%;">Manter Conectado</label>
+                        <a href="esqueci_senha.php" class="text" style="margin-left: 12%;">Esqueceu sua senha?</a>
+                    <div class="text-center text-danger pt-3" id="id_msg"></div>
+                    <button type="submit" class="button-login input-field" style="text-align: center; background-color: #915c37; border: none; color: #fff; font-size: 17px; font-weight: 500; letter-spacing: 1px; border-radius: 6px; padding: .5rem 9.5rem;" id="btn_login">Entrar</button>
                 </form>
                 <div class="login-signup">
                     <span class="text">Não tem uma conta?
@@ -47,6 +46,7 @@
     </div>
 
     <script src="js/script1.js"></script>
+    <script src="cookies.php"></script>
     <script src="js/scriptLogin.js"></script>
 </body>
 

@@ -441,7 +441,7 @@
         
         .button-cadastro input:hover {
             background-color: #814a23;
-        }ccc
+        }
         
         .text-check {
             margin-top: -4px;
@@ -556,7 +556,8 @@
             height: 3px;
             width: 30px;
             background-color: #915c37;
-            border-radius: 25px;d3beaf
+            border-radius: 25px;
+            d3beaf
         }
         
         .form .title::before {
@@ -963,4 +964,18 @@
         
         .form-group {
             display: none;
+        }
+
+        .valida small {
+            visibility: hidden;
+            position: absolute;
+            margin-top: 5px;
+            font-size: 14px;
+        }
+        
+        .valida.error small {
+            visibility: visible;
+            margin-top: 1px;
+            font-size: 11px;
+            color: red;
         }

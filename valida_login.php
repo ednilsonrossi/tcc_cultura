@@ -19,3 +19,4 @@ if ($usuario == null) {
 $json = json_encode($saida);
 echo $json;
 ?>
+

@@ -34,6 +34,22 @@ function buscarUsuario($email, $senha) {
     return [$usuario, $msg]; 
   }
 
+  function listarPerfis() {
+    $lista_perfis = [];
+    $sql = "SELECT * FROM TipoPerfil";
+
+    $conexao = obterConexao();
+    $resultado = mysqli_query($conexao, $sql);
+
+    while($perfil = mysqli_fetch_assoc($resultado)) {
+        array_push($lista_perfis, $perfil);
+    }
+
+    mysqli_close($conexao);
+
+    return $lista_perfis;
+}
+
 function inserirUsuario($nome, $email, $telefone, $data, $senha, $perfil) {
   $sql = "SELECT email FROM Cadastro WHERE email = ?";
   $conexao = obterConexao();
@@ -44,7 +60,8 @@ function inserirUsuario($nome, $email, $telefone, $data, $senha, $perfil) {
   $resultado = $stmt->get_result();
   $row_cnt = mysqli_num_rows($resultado);
   if ($row_cnt == 1) {
-      echo "Usuário já existente!";
+    header("Location: usuarioExistente.php");
+    die();
   } else {
       $sql = "INSERT INTO Cadastro (nome, email, telefone, data_nasc, senha, id_tipo) VALUES (?, ?, ?, ?, ?, ?)";
       $stmt = $conexao->prepare($sql);

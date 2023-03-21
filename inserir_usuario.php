@@ -10,6 +10,8 @@ $perfil = $_POST["id_tipo"];
 
 inserirUsuario($nome, $email, $telefone, $data, $senha, $perfil);
 
+$confirmar = $_POST["confirmar"];
+
 header("Location: login.php");
 
 ?>
